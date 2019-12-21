@@ -1,0 +1,64 @@
+          HELP for UAE Debugger
+         -----------------------
+
+  g [<address>]         Start execution at the current address or <address>.
+  c                     Dump state of the CIA, disk drives and custom registers.
+  r                     Dump state of the CPU.
+  r <reg> <value>       Modify CPU registers (Dx,Ax,USP,ISP,VBR,...).
+  m <address> [<lines>] Memory dump starting at <address>.
+  d <address> [<lines>] Disassembly starting at <address>.
+  t [instructions]      Step one or more instructions.
+  z                     Step through one instruction - useful for JSR, DBRA etc.
+  f                     Step forward until PC in RAM ("boot block finder").
+  f <address>           Add/remove breakpoint.
+  fa <address> [<start>] [<end>]
+                        Find effective address <address>.
+  fi                    Step forward until PC points to RTS, RTD or RTE.
+  fi <opcode>           Step forward until PC points to <opcode>.
+  fp "<name>"/<addr>    Step forward until process <name> or <addr> is active.
+  fl                    List breakpoints.
+  fd                    Remove all breakpoints.
+  fs <lines to wait> | <vpos> <hpos> Wait n scanlines/position.
+  fc <CCKs to wait>     Wait n color clocks.
+  fS <val> <mask>       Break when (SR & mask) = val.
+  f <addr1> <addr2>     Step forward until <addr1> <= PC <= <addr2>.
+  e                     Dump contents of all custom registers, ea = AGA colors.
+  i [<addr>]            Dump contents of interrupt and trap vectors.
+  il [<mask>]           Exception breakpoint.
+  o <0-2|addr> [<lines>]View memory as Copper instructions.
+  od                    Enable/disable Copper vpos/hpos tracing.
+  ot                    Copper single step trace.
+  ob <addr>             Copper breakpoint.
+  H[H] <cnt>            Show PC history (HH=full CPU info) <cnt> instructions.
+  C <value>             Search for values like energy or lifes in games.
+  Cl                    List currently found trainer addresses.
+  D[idxzs <[max diff]>] Deep trainer. i=new value must be larger, d=smaller,
+                        x = must be same, z = must be different, s = restart.
+  W <address> <values[.x] separated by space> Write into Amiga memory.
+  W <address> 'string' Write into Amiga memory.
+  w <num> <address> <length> <R/W/I/F/C> [<value>[.x]] (read/write/opcode/freeze/mustchange).
+                        Add/remove memory watchpoints.
+  wd [<0-1>]            Enable illegal access logger. 1 = enable break.
+  S <file> <addr> <n>   Save a block of Amiga memory.
+  s "<string>"/<values> [<addr>] [<length>]
+                        Search for string/bytes.
+  T or Tt               Show exec tasks and their PCs.
+  Td,Tl,Tr,Tp,Ts,TS,Ti,TO,TM Show devs, libs, resources, ports, semaphores,
+                        residents, interrupts, doslist and memorylist.
+  b                     Step to previous state capture position.
+  M<a/b/s> <val>        Enable or disable audio channels, bitplanes or sprites.
+  sp <addr> [<addr2][<size>] Dump sprite information.
+  di <mode> [<track>]   Break on disk access. R=DMA read,W=write,RW=both,P=PIO.
+                        Also enables level 1 disk logging.
+  did <log level>       Enable disk logging.
+  dj [<level bitmask>]  Enable joystick/mouse input debugging.
+  smc [<0-1>]           Enable self-modifying code detector. 1 = enable break.
+  dm                    Dump current address space map.
+  v <vpos> [<hpos>]     Show DMA data (accurate only in cycle-exact mode).
+                        v [-1 to -4] = enable visual DMA debugger.
+  ?<value>              Hex ($ and 0x)/Bin (%)/Dec (!) converter.
+  x                     Close debugger.
+  xx                    Switch between console and GUI debugger.
+  mg <address>          Memory dump starting at <address> in GUI.
+  dg <address>          Disassembly starting at <address> in GUI.
+  q                     Quit the emulator. You don't want to use this command.

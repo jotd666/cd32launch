@@ -1,0 +1,24 @@
+LINK = vlink 
+ASM = vasmm68k_mot
+# no symbols: makes executable smaller (and this software is undebuggable with a symbolic debugger anyway)
+ASMOPTS =  -IK:/jff/AmigaHD/amiga39_JFF_OS/include -x -Fhunk -nosym
+
+
+OBJDIR = ..\obj
+EXEDIR = ..\bin
+
+
+OBJS = $(OBJDIR)/main.o 
+
+all : $(EXEDIR)/cd32launch
+
+
+clean:
+	del /Q $(EXEDIR)\* $(OBJDIR)\*.o
+
+$(EXEDIR)/cd32launch	: $(OBJS) $(MAKEFILE)
+	$(LINK) -o $(EXEDIR)/cd32launch $(OBJS)
+	
+
+$(OBJDIR)/main.o: util.asm main.asm
+	$(ASM) -phxass $(ASMOPTS) main.asm -o $(OBJDIR)/main.o
